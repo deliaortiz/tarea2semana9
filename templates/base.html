@@ -10,21 +10,21 @@
     <nav>
       <ul>
         {% if user.is_authenticated %}
-        <li><a href="{% url 'tasks:index' %}">Lista de Tareas</a></li>
-        <form method="post" action="{% url 'logout' %}">
-          {% csrf_token %}
-          <button type="submit" class="cerrar">Cerrar sesión</button>
+          <li><a href="{% url 'tasks:index' %}">Lista de Tareas</a></li>
           <li><a href="{% url 'user_detail' user.pk %}">Información del usuario</a></li>
-        </form>
-      </li>
+          <li>
+            <form method="post" action="{% url 'logout' %}" style="display: inline;"> 
+              {% csrf_token %}
+              <button type="submit" class="cerrar">Cerrar sesión</button>
+            </form>
+          </li>
         {% else %}
-        <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
-        <li><a href="{% url 'signup' %}">Registro de usuario</a></li>
-        <!-- Añadido -->
+          <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+          <li><a href="{% url 'signup' %}">Registro de usuario</a></li>
         {% endif %}
       </ul>
     </nav>
-    </nav>
+
     <main>
       <div>
         {% block main %}
